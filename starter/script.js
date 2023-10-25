@@ -91,3 +91,13 @@ var finances = [
 // The total number of months included in the dataset.
 
 console.log(finances.length)
+
+// * The net total amount of Profit/Losses over the entire period.
+
+// we need to create a for loop through the array to do month2-month1
+var  netTotal= 0
+
+for (var i = 0; i < finances.length; i++) {
+  netTotal += finances[i][1];
+}
+console.log("The net total amount of Profit/Losses over the entire period is" + netTotal)
