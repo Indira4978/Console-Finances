@@ -100,4 +100,34 @@ var  netTotal= 0
 for (var i = 0; i < finances.length; i++) {
   netTotal += finances[i][1];
 }
-console.log("The net total amount of Profit/Losses over the entire period is" + netTotal)
+console.log("The net total amount of Profit/Losses over the entire period is " + netTotal)
+
+// The average of the **changes** in Profit/Losses over the entire period.
+// We can run a for loop through the array to calulate and track the changes from a month to another.
+//We will start with an emty array to store our results later//
+
+var monthToMonthVariation = []; 
+
+for (var i = 1; i < finances.length; i++) {
+  var currentMonth = finances[i][1];
+  var previousMonth = finances[i - 1][1];
+  var profitVariation = currentMonth - previousMonth;
+  monthToMonthVariation.push(profitVariation);
+}
+  console.log(monthToMonthVariation)
+  
+
+// Now we get the average variation by first adding up all month to month variation with a for loop and then dividing by the nb of month -1 (85)
+
+var totalVariation = 0
+
+for (var i = 0; i < monthToMonthVariation.length; i++) {
+  totalVariation += monthToMonthVariation[i];
+}
+  console.log("the total variation is "+ totalVariation)
+  //Average variation = Total/(Number of months - 1)//
+   var averageVariation = totalVariation / monthToMonthVariation.length
+
+   console.log("The average of the changes in Profit/Losses over the entire period is " + averageVariation)
+
+
