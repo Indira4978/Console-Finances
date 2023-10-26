@@ -108,11 +108,21 @@ console.log("The net total amount of Profit/Losses over the entire period is " +
 
 var monthToMonthVariation = []; 
 
+// for (var i = 1; i < finances.length; i++) {
+//   var currentMonth = finances[i][1];
+//   var previousMonth = finances[i - 1][1];
+//   var profitVariation = currentMonth - previousMonth;
+//   var date = finances[i][0];
+//   monthToMonthVariation.push({date: date, change: profitVariation});
+// }
+
 for (var i = 1; i < finances.length; i++) {
   var currentMonth = finances[i][1];
   var previousMonth = finances[i - 1][1];
   var profitVariation = currentMonth - previousMonth;
-  monthToMonthVariation.push(profitVariation);
+  var date = finances[i][0];
+  
+  monthToMonthVariation.push([date, profitVariation]);
 }
   console.log(monthToMonthVariation)
   
@@ -131,3 +141,7 @@ for (var i = 0; i < monthToMonthVariation.length; i++) {
    console.log("The average of the changes in Profit/Losses over the entire period is " + averageVariation)
 
 
+//The greatest increase in Profit/Losses (date and amount) over the entire period.
+//We need to be able to access both indexes in the nested arrays of finances to sort the variation in profit/losses and access the corresponding period. 
+
+var sortedFinances = finances.slice();
