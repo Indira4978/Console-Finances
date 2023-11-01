@@ -107,16 +107,17 @@ console.log("The net total amount of Profit/Losses over the entire period is " +
 // we need to substract index 1 of each nested arrays from index 1 of the previous one and then divide teh total by finances.length - 1
 //We will start with an empty array to store our results later//
 //how do I make sure that I can keep track of the index 0 of each nested array so I know when the variation occured ? 
-var totalVariation = 0;
+
+var totalVariation = []; // I want to store the variations
 
 for (var i = 1; i < finances.length; i++) {
   var currentMonth = finances[i][1];
   var previousMonth = finances[i - 1][1];
-  var profitVariation = currentMonth - previousMonth;     
-  totalVariation += profitVariation;
+  var profitVariation = currentMonth - previousMonth; 
+  totalVariation.push(profitVariation)
 }
   averageVariation = profitVariation / (finances.length - 1);
-  console.log("The average change over the full period is " + averageVariation) // incorrect result but cannot figure out why 
+  console.log("The average change over the full period is " + averageVariation) // returns incorrect result but cannot figure out why 
 
 // //We need to be able to access both indexes in the nested arrays of finances to sort the variation in profit/losses and access the corresponding period. 
 
