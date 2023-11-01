@@ -1,2 +1,2 @@
 # Console-Finances
-Code for analyzing the financial records of a company.
+Algorythm to analyse the financial records of a company.
