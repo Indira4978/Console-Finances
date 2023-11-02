@@ -151,4 +151,3 @@ var averageVariation = Math.round((netChangesSum / 86) * 100) / 100;
 console.log("Average Change:" + averageVariation)
 console.log("Greatest Increase in Profits/Losses: "+ greatestVariation) 
 console.log("Greatest Decrease in Profits/Losses: " + lowestVariation);
-
