@@ -16,5 +16,5 @@ The code provides access to relvant and useful information such as how many mont
 
 
  # Application:  
-    Link to application: <a href="https://indira4978.github.io/Console-Finances/">
+    Link to application: https://indira4978.github.io/Console-Finances/
     
