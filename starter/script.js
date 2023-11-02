@@ -87,20 +87,21 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-
+console.log("Financial Analysis")
+console.log("======================")
 // The total number of months included in the dataset.
 
-console.log("Total month = " + finances.length)
+console.log("Total Months: " + finances.length)
 
 // * The net total amount of Profit/Losses over the entire period.
 
 // we need to create a for loop through the array to do add up all months. 
-var  netTotal= 0
+var netTotal = 0
 
 for (var i = 0; i < finances.length; i++) {
   netTotal += finances[i][1];
 }
-console.log("The net total amount of Profit/Losses over the entire period is " + netTotal)
+console.log("Total $" + netTotal)
 
 // The average of the **changes** in Profit/Losses over the entire period.
 // We can run a for loop through the array to calulate and track the changes from a month to another >> month2 - month1, month 3 - month 4 etc...
@@ -109,19 +110,45 @@ console.log("The net total amount of Profit/Losses over the entire period is " +
 //how do I make sure that I can keep track of the index 0 of each nested array so I know when the variation occured ? 
 
 var totalVariation = []; // I want to store the variations
+var change = 0; // this is how we will calculate the sum of all changes to lead to the average 
 
-for (var i = 1; i < finances.length; i++) {
-  var currentMonth = finances[i][1];
-  var previousMonth = finances[i - 1][1];
-  var profitVariation = currentMonth - previousMonth; 
-  totalVariation.push(profitVariation)
+var greatestVariation = ['', 0]
+var lowestVariation= ['', 9999999999]
+
+for (var i = 0; i < finances.length; i++) {
+  // var currentMonth = finances[i][1];
+  // var previousMonth = finances[i - 1][1];
+  // var profitVariation = currentMonth - previousMonth; 
+  // totalVariation.push(profitVariation)
+
+  for (var j = 0; j < finances[i].length; j++) {
+    if(typeof finances[i][j]  !== 'string'){
+      change = finances[i][j] - netTotal
+      netTotal = finances[i][j]
+      totalVariation.push(change)
+
+
+      if(change > greatestVariation[1]){
+        greatestVariation = [finances[i][0], finances[i][1]]
+      }
+      if(change < lowestVariation[1]){
+        lowestVariation = [finances[i][0], finances[i][1]]
+      }
+    }
+  }
+
 }
-  averageVariation = profitVariation / (finances.length - 1);
-  console.log("The average change over the full period is " + averageVariation) // returns incorrect result but cannot figure out why 
 
-// //We need to be able to access both indexes in the nested arrays of finances to sort the variation in profit/losses and access the corresponding period. 
+var netChangesSum = 0
 
-// var sortedFinances = finances.slice();
+for (let i = 0; i < totalVariation.length; i++) {
+  netChangesSum = netChangesSum + totalVariation[i]
+  
+}
 
+var averageVariation = Math.round((netChangesSum / 86) * 100) / 100;
 
-//Try using for.. in loop to display results in html
+console.log("Average Change:" + averageVariation)
+console.log("Greatest Increase in Profits/Losses: "+ greatestVariation) 
+console.log("Greatest Decrease in Profits/Losses: " + lowestVariation);
+
